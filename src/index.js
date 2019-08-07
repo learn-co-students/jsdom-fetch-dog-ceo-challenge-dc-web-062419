@@ -21,13 +21,38 @@ document.addEventListener('DOMContentLoaded', function(){
             breedUl.appendChild(breedLi)
             breedLi.innerText = key
 
+            breedLi.addEventListener("click", function(){
+               breedLi.className = 'green'
+
+
+            })
+
         }
        
-    
+        
     })
- 
     
+    const dropDown = document.querySelector("select")
+    dropDown.addEventListener("change", sortBreeds)
+    
+    
+    
+    function sortBreeds(e) {
+        const allBreeds = document.querySelectorAll("li")
+        console.log("hi")
+            allBreeds.forEach((breed)=>{
+                if(breed.innerText[0] !== e.currentTarget.value){
+                   
+                   breed.style.display = 'none'
 
+                }
+                else{
+                    console.log()
+                    breed.style.display = ''
+                }
+        
+        
+            })
+        }
+    
 })
-
-
