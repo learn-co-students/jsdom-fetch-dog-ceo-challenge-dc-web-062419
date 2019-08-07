@@ -25,9 +25,37 @@ document.addEventListener("DOMContentLoaded", function(){
         breedLi.id = breedName
         breedList.appendChild(breedLi)
         breedLi.addEventListener("click", function(e){
-
-          debugger
+            e.target.style.color = "red"
+        //   debugger
         })
       }
+      
      })
+    let filterList = document.getElementById('breed-dropdown')
+    let selectedOption = filterList.value
+    filterList.addEventListener('change', function(e){
+        let letter = e.target.value
+        filterBreed(letter)
+    })
+    
 })
+
+function filterBreed(letter){
+    let fullList = document.querySelectorAll('li')
+    
+    for(const idx in fullList){
+        let firstLetter = fullList[idx].innerText.charAt(0)
+        
+        if(firstLetter === letter){
+            let newLi = document.createElement('li')
+            newLi.innerText = fullList[idx].innerText
+            let breedList = document.getElementById("dog-breeds")
+            breedList.appendChild(newLi)
+            
+        } else {
+            fullList[idx].remove()
+        }
+    }
+    
+}
+
